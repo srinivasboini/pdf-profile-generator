@@ -22,7 +22,7 @@ public class ProfileOptimizer {
     private final String model;
 
     public ProfileOptimizer(
-            @Value("${openai.api.key}") String apiKey,
+            @Value("${openai.api.key:DUMMY_KEY}") String apiKey,
             @Value("${openai.api.model:gpt-5}") String model,
             @Value("${openai.api.timeout:180}") int timeoutSeconds) {
         this.openAiService = new OpenAiService(apiKey, Duration.ofSeconds(timeoutSeconds));
