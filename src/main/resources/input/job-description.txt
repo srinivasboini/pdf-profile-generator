@@ -1,0 +1,32 @@
+Senior Backend Engineer - Cloud Platform Team
+
+We are seeking an experienced Senior Backend Engineer to join our Cloud Platform team. You will be responsible for designing and implementing scalable backend services that power our enterprise SaaS platform.
+
+Key Responsibilities:
+- Design and develop high-performance microservices using Java and Spring Boot
+- Build and maintain REST APIs consumed by web and mobile applications
+- Implement cloud-native solutions on AWS (EC2, Lambda, S3, RDS, etc.)
+- Optimize database queries and data models for PostgreSQL
+- Collaborate with DevOps team to implement CI/CD pipelines
+- Mentor junior engineers and participate in code reviews
+- Ensure system reliability, security, and performance
+
+Required Qualifications:
+- 5+ years of professional software development experience
+- Strong expertise in Java and Spring Boot framework
+- Experience with microservices architecture and distributed systems
+- Proficiency with AWS cloud services
+- Deep understanding of REST API design and best practices
+- Experience with relational databases (PostgreSQL, MySQL)
+- Knowledge of containerization (Docker) and orchestration (Kubernetes)
+- Familiarity with CI/CD tools (Jenkins, GitLab CI, or similar)
+- Strong problem-solving and debugging skills
+
+Preferred Qualifications:
+- Experience with message queues (RabbitMQ, Kafka)
+- Knowledge of caching strategies (Redis, Memcached)
+- AWS certifications
+- Experience with monitoring tools (Prometheus, Grafana, CloudWatch)
+- Background in Agile/Scrum methodologies
+
+We offer competitive compensation, comprehensive benefits, and opportunities for professional growth in a collaborative environment.

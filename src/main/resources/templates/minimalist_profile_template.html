@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Professional Profile - Minimalist Design</title>
+    <style>
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #000;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 60px;
+            background: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #000;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 400;
+            margin: 0 0 15px 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .contact-bar {
+            font-size: 12px;
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .contact-bar span {
+            margin: 0 15px;
+        }
+
+        .section {
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #000;
+        }
+
+        .summary {
+            font-size: 15px;
+            line-height: 1.9;
+            text-align: justify;
+            font-style: italic;
+            color: #333;
+        }
+
+        .skills-minimal {
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .skills-minimal span {
+            display: inline;
+            margin-right: 5px;
+        }
+
+        .skills-minimal span::after {
+            content: " • ";
+            margin: 0 8px;
+        }
+
+        .skills-minimal span:last-child::after {
+            content: "";
+        }
+
+        .experience-item {
+            margin-bottom: 35px;
+            page-break-inside: avoid;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .date-minimal {
+            font-size: 12px;
+            font-family: 'Arial', sans-serif;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .company-minimal {
+            font-size: 15px;
+            font-style: italic;
+            margin-bottom: 12px;
+            color: #333;
+        }
+
+        .description-minimal {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .description-minimal ul {
+            margin: 10px 0;
+            padding-left: 25px;
+            list-style-type: none;
+        }
+
+        .description-minimal li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .description-minimal li::before {
+            content: "—";
+            position: absolute;
+            left: -20px;
+        }
+
+        .education-minimal {
+            margin-bottom: 20px;
+        }
+
+        .degree-minimal {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .edu-details {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .edu-details span {
+            font-style: italic;
+        }
+
+        .certifications-list {
+            font-size: 14px;
+            line-height: 2.2;
+        }
+
+        .cert-minimal {
+            display: block;
+        }
+
+        .cert-minimal::before {
+            content: "— ";
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 th:text="${name}">Candidate Name</h1>
+        <div class="contact-bar">
+            <span th:text="${email}">email@example.com</span>
+            <span>|</span>
+            <span th:text="${phone}">+1 (555) 123-4567</span>
+            <span>|</span>
+            <span th:text="${location}">City, State</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Profile</div>
+        <div class="summary" th:utext="${summary}">
+            Professional summary goes here...
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Expertise</div>
+        <div class="skills-minimal">
+            <span th:each="skill : ${skills}" th:text="${skill}">Skill</span>
+        </div>
+    </div>
+
+    <div class="section" th:if="${experience != null and !experience.isEmpty()}">
+        <div class="section-title">Experience</div>
+        <div class="experience-item" th:each="exp : ${experience}">
+            <div class="exp-header">
+                <div class="job-title" th:text="${exp.title}">Job Title</div>
+                <div class="date-minimal" th:text="${exp.duration}">Jan 2020 - Present</div>
+            </div>
+            <div class="company-minimal" th:text="${exp.company}">Company Name</div>
+            <div class="description-minimal" th:utext="${exp.description}">
+                Job description and achievements...
+            </div>
+        </div>
+    </div>
+
+    <div class="section" th:if="${education != null and !education.isEmpty()}">
+        <div class="section-title">Education</div>
+        <div class="education-minimal" th:each="edu : ${education}">
+            <div class="degree-minimal" th:text="${edu.degree}">Degree</div>
+            <div class="edu-details">
+                <span th:text="${edu.institution}">University Name</span> —
+                <span th:text="${edu.year}">2020</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" th:if="${certifications != null and !certifications.isEmpty()}">
+        <div class="section-title">Certifications</div>
+        <div class="certifications-list">
+            <div class="cert-minimal" th:each="cert : ${certifications}" th:text="${cert}">Certification</div>
+        </div>
+    </div>
+</body>
+</html>

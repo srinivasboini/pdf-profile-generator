@@ -1,0 +1,56 @@
+{
+  "name": "Sarah Johnson",
+  "email": "sarah.johnson@email.com",
+  "phone": "+1 (555) 123-4567",
+  "location": "San Francisco, CA",
+  "summary": "Experienced software engineer with 5+ years of expertise in full-stack development. Passionate about building scalable applications and solving complex problems. Strong background in Java, Python, and cloud technologies.",
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Python",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "PostgreSQL",
+    "MongoDB",
+    "REST APIs",
+    "Microservices",
+    "Git",
+    "Agile/Scrum"
+  ],
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "TechCorp Solutions",
+      "duration": "Jan 2021 - Present",
+      "description": "<ul><li>Led development of microservices architecture serving 1M+ users</li><li>Reduced API response time by 40% through optimization and caching strategies</li><li>Mentored junior developers and conducted code reviews</li><li>Implemented CI/CD pipelines using Jenkins and Docker</li></ul>"
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Digital Innovations Inc",
+      "duration": "Jun 2019 - Dec 2020",
+      "description": "<ul><li>Developed and maintained e-commerce platform using Spring Boot and React</li><li>Integrated third-party payment gateways and shipping APIs</li><li>Improved application performance by implementing Redis caching</li><li>Collaborated with cross-functional teams in Agile environment</li></ul>"
+    },
+    {
+      "title": "Junior Developer",
+      "company": "StartUp Labs",
+      "duration": "Aug 2018 - May 2019",
+      "description": "<ul><li>Built RESTful APIs for mobile applications</li><li>Developed database schemas and optimized SQL queries</li><li>Participated in daily stand-ups and sprint planning</li><li>Fixed bugs and added new features based on user feedback</li></ul>"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University of California, Berkeley",
+      "year": "2018"
+    }
+  ],
+  "certifications": [
+    "AWS Certified Solutions Architect - Associate",
+    "Oracle Certified Professional: Java SE 11 Developer",
+    "Certified Kubernetes Application Developer (CKAD)"
+  ]
+}
