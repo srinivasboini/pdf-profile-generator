@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Classic Professional - STARTER</title>
+    <style>
+        * {
+            font-family: 'Calibri', 'Arial', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+        }
+        .contact-info {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #666;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section:last-child {
+            page-break-inside: avoid;
+        }
+        .section h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+        }
+        .summary {
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .skills-list {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .skills-list span {
+            display: inline;
+        }
+        .skills-list span::after {
+            content: " • ";
+            margin: 0 4px;
+            color: #999;
+        }
+        .skills-list span:last-child::after {
+            content: "";
+        }
+        .experience-item, .education-item {
+            margin-bottom: 18px;
+        }
+        .experience-item:last-child, .education-item:last-child {
+            page-break-inside: avoid;
+        }
+        .job-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #000;
+        }
+        .company {
+            color: #666;
+            font-size: 14px;
+        }
+        .date {
+            color: #999;
+            font-size: 13px;
+            font-style: italic;
+        }
+        .description {
+            margin-top: 6px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        ul {
+            margin: 8px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        li {
+            margin-bottom: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #333;
+        }
+        @page {
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 th:text="${name}">Candidate Name</h1>
+        <div class="contact-info">
+            <span th:text="${email}">email@example.com</span> |
+            <span th:text="${phone}">+1 (555) 123-4567</span> |
+            <span th:text="${location}">City, State</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Professional Summary</h2>
+        <div class="summary" th:utext="${summary}">
+            Professional summary goes here...
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Skills</h2>
+        <div class="skills-list">
+            <span th:each="skill : ${skills}" th:text="${skill}">Skill</span>
+        </div>
+    </div>
+
+    <div class="section" th:if="${experience != null and !experience.isEmpty()}">
+        <h2>Professional Experience</h2>
+        <div class="experience-item" th:each="exp : ${experience}">
+            <div class="job-title" th:text="${exp.title}">Job Title</div>
+            <div class="company" th:text="${exp.company}">Company Name</div>
+            <div class="date" th:text="${exp.duration}">Jan 2020 - Present</div>
+            <div class="description" th:utext="${exp.description}">
+                Job description and achievements...
+            </div>
+        </div>
+    </div>
+
+    <div class="section" th:if="${education != null and !education.isEmpty()}">
+        <h2>Education</h2>
+        <div class="education-item" th:each="edu : ${education}">
+            <div class="job-title" th:text="${edu.degree}">Degree</div>
+            <div class="company" th:text="${edu.institution}">University Name</div>
+            <div class="date" th:text="${edu.year}">2020</div>
+        </div>
+    </div>
+
+    <div class="section" th:if="${certifications != null and !certifications.isEmpty()}">
+        <h2>Certifications</h2>
+        <ul>
+            <li th:each="cert : ${certifications}" th:text="${cert}">Certification</li>
+        </ul>
+    </div>
+</body>
+</html>

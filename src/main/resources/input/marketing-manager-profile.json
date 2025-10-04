@@ -1,0 +1,65 @@
+{
+  "name": "Sarah Johnson",
+  "email": "sarah.johnson@email.com",
+  "phone": "+1 (212) 555-7890",
+  "location": "New York, NY",
+  "summary": "Dynamic Marketing Manager with 6+ years of experience driving brand growth and customer engagement across digital channels. Expertise in developing data-driven marketing strategies that increased customer acquisition by 150% and improved ROI by 200%. Skilled in leading cross-functional teams and managing multi-million dollar marketing budgets.",
+  "skills": [
+    "Digital Marketing Strategy",
+    "SEO/SEM",
+    "Google Analytics",
+    "Social Media Marketing",
+    "Content Marketing",
+    "Email Marketing",
+    "Marketing Automation",
+    "HubSpot",
+    "Salesforce",
+    "A/B Testing",
+    "Campaign Management",
+    "Brand Management",
+    "Budget Management",
+    "Team Leadership",
+    "Adobe Creative Suite",
+    "Google Ads",
+    "Facebook Ads",
+    "Influencer Marketing"
+  ],
+  "experience": [
+    {
+      "title": "Senior Marketing Manager",
+      "company": "Global Brands Co.",
+      "duration": "Jul 2021 - Present",
+      "description": "<ul><li>Lead digital marketing strategy for portfolio of 5 brands with combined revenue of $50M annually</li><li>Increased organic website traffic by 180% through comprehensive SEO and content marketing initiatives</li><li>Managed $3M annual marketing budget with consistent 5:1 ROI across all channels</li><li>Built and mentored team of 8 marketing professionals including content creators, designers, and analysts</li><li>Launched successful product campaigns that generated $12M in revenue within first 6 months</li></ul>"
+    },
+    {
+      "title": "Marketing Manager",
+      "company": "E-Commerce Startup",
+      "duration": "May 2019 - Jun 2021",
+      "description": "<ul><li>Developed and executed multi-channel marketing campaigns resulting in 150% increase in customer acquisition</li><li>Implemented marketing automation workflows using HubSpot, improving lead nurturing efficiency by 75%</li><li>Grew social media following from 10K to 250K across all platforms in 18 months</li><li>Reduced customer acquisition cost by 40% through optimization of paid advertising campaigns</li><li>Collaborated with sales team to create content that generated 500+ qualified leads monthly</li></ul>"
+    },
+    {
+      "title": "Digital Marketing Specialist",
+      "company": "Creative Agency",
+      "duration": "Aug 2017 - Apr 2019",
+      "description": "<ul><li>Managed Google Ads and Facebook Ads campaigns with monthly budgets up to $100K</li><li>Created email marketing campaigns with average open rate of 28% and click-through rate of 4.5%</li><li>Conducted market research and competitor analysis to inform marketing strategies</li><li>Produced 50+ blog posts and social media content pieces monthly</li></ul>"
+    }
+  ],
+  "education": [
+    {
+      "degree": "MBA in Marketing",
+      "institution": "Columbia Business School",
+      "year": "2017"
+    },
+    {
+      "degree": "Bachelor of Arts in Communications",
+      "institution": "New York University",
+      "year": "2015"
+    }
+  ],
+  "certifications": [
+    "Google Analytics Certified Professional",
+    "HubSpot Inbound Marketing Certification",
+    "Facebook Blueprint Certification",
+    "Google Ads Certification"
+  ]
+}

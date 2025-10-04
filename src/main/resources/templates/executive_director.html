@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Executive Director - EXPERT</title>
+    <style>
+        * {
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #2c2c2c;
+            margin: 0;
+            padding: 40px;
+            background: white;
+            font-size: 12px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .header h1 {
+            font-size: 26px;
+            font-weight: 400;
+            margin: 0;
+            color: #1a1a1a;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .intro-section {
+            background: #17a2b8;
+            color: white;
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            font-size: 11px;
+            line-height: 1.7;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section:last-child {
+            page-break-inside: avoid;
+        }
+        .section h2 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #17a2b8;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .two-column {
+            display: table;
+            width: 100%;
+        }
+        .column-left {
+            display: table-cell;
+            width: 48%;
+            vertical-align: top;
+            padding-right: 20px;
+        }
+        .column-right {
+            display: table-cell;
+            width: 48%;
+            vertical-align: top;
+            padding-left: 20px;
+        }
+        .divider {
+            border-bottom: 2px solid #17a2b8;
+            margin: 20px 0;
+        }
+        .info-item {
+            margin-bottom: 12px;
+            font-size: 11px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .info-label {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 11px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .info-value {
+            color: #4a4a4a;
+            font-size: 11px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .skills-grid {
+            font-size: 11px;
+            line-height: 1.8;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .skill-item {
+            margin-bottom: 6px;
+            color: #2c2c2c;
+            font-size: 11px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .skill-item::before {
+            content: "◆ ";
+            color: #17a2b8;
+            margin-right: 5px;
+        }
+        .experience-item {
+            margin-bottom: 25px;
+        }
+        .experience-item:last-child {
+            page-break-inside: avoid;
+        }
+        .job-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .company-location {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .job-description {
+            font-size: 11px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        .job-description ul {
+            margin: 8px 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        .job-description li {
+            margin-bottom: 5px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #4a4a4a;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        @page {
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><span th:text="${name}">ParasyteArt</span></h1>
+    </div>
+
+    <div class="intro-section" th:utext="${summary}">
+        A graphic designer is a professional within the graphic design and graphic arts industry who assembles together images, typography or motion graphics to create a piece of design (industry alta...
+    </div>
+
+    <div class="two-column">
+        <div class="column-left">
+            <div class="section" th:if="${education != null and !education.isEmpty()}">
+                <h2>Education</h2>
+                <div class="divider"></div>
+                <div th:each="edu : ${education}" style="margin-bottom: 20px;">
+                    <div class="info-item">
+                        <div class="info-label" th:text="${edu.institution}">HIGH SCHOOL OF DESIGN</div>
+                        <div class="info-value" th:text="${edu.degree}">Degree Name</div>
+                        <div class="info-value" th:text="${edu.year}">2013 - May 2015</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" th:if="${skills != null and !skills.isEmpty()}">
+                <h2>Technical Skills</h2>
+                <div class="divider"></div>
+                <div class="skills-grid">
+                    <div th:each="skill : ${skills}" class="skill-item" th:text="${skill}">Skill Name</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column-right">
+            <div class="section" th:if="${experience != null and !experience.isEmpty()}">
+                <h2>Experience</h2>
+                <div class="divider"></div>
+                <div th:each="exp : ${experience}" class="experience-item">
+                    <div class="job-title" th:text="${exp.title}">Junior Visual Artist</div>
+                    <div class="company-location">
+                        <span th:text="${exp.company}">Studio Showde</span> |
+                        <span th:text="${exp.duration}">Los Angles, USA</span>
+                    </div>
+                    <div class="job-description" th:utext="${exp.description}">
+                        Job description goes here...
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" th:if="${certifications != null and !certifications.isEmpty()}">
+                <h2>Certifications</h2>
+                <div class="divider"></div>
+                <div th:each="cert : ${certifications}" class="skill-item" th:text="${cert}">Certification</div>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${email != null or phone != null or location != null}" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 11px; color: #666; text-align: center; font-family: 'Georgia', 'Times New Roman', serif;">
+        <span th:if="${email != null}" th:text="${email}">email</span>
+        <span th:if="${email != null and (phone != null or location != null)}"> | </span>
+        <span th:if="${phone != null}" th:text="${phone}">phone</span>
+        <span th:if="${phone != null and location != null}"> | </span>
+        <span th:if="${location != null}" th:text="${location}">location</span>
+    </div>
+</body>
+</html>

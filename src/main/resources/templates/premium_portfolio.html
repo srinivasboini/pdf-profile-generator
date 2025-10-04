@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Premium Portfolio - EXPERT</title>
+    <style>
+        * {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #2c2c2c;
+            margin: 0;
+            padding: 0;
+            background: white;
+            font-size: 11px;
+        }
+        .container {
+            display: table;
+            width: 100%;
+        }
+        .left-column {
+            display: table-cell;
+            width: 35%;
+            background: #f8f8f8;
+            padding: 50px 30px;
+            vertical-align: top;
+        }
+        .right-column {
+            display: table-cell;
+            width: 65%;
+            padding: 50px 40px;
+            vertical-align: top;
+        }
+        .header-left {
+            margin-bottom: 30px;
+        }
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            background: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            font-size: 11px;
+            line-height: 1.7;
+            color: #4a4a4a;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .contact-item {
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+        .contact-label {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 11px;
+        }
+        .section-left {
+            margin-bottom: 35px;
+        }
+        .section-left h2 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #17a2b8;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .section-content {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #4a4a4a;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .skill-item {
+            margin-bottom: 8px;
+            color: #2c2c2c;
+            font-size: 11px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .skill-item::before {
+            content: "• ";
+            color: #17a2b8;
+            font-weight: 700;
+        }
+        .header-right {
+            text-align: right;
+            margin-bottom: 35px;
+        }
+        .header-right h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin: 0;
+            color: #1a1a1a;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .intro-box {
+            background: #17a2b8;
+            color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            font-size: 11px;
+            line-height: 1.7;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .section-right {
+            margin-bottom: 35px;
+        }
+        .section-right:last-child {
+            page-break-inside: avoid;
+        }
+        .section-right h2 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #17a2b8;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #17a2b8;
+            padding-bottom: 8px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .experience-item {
+            margin-bottom: 25px;
+        }
+        .experience-item:last-child {
+            page-break-inside: avoid;
+        }
+        .job-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .company-info {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 10px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .job-description {
+            font-size: 11px;
+            color: #4a4a4a;
+            line-height: 1.6;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .job-description ul {
+            margin: 8px 0;
+            padding-left: 18px;
+            list-style-type: disc;
+        }
+        .job-description li {
+            margin-bottom: 5px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #4a4a4a;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .education-item {
+            margin-bottom: 20px;
+        }
+        .degree {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .institution-info {
+            font-size: 11px;
+            color: #4a4a4a;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        @page {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="header-left">
+                <div class="contact-info">
+                    <div class="contact-item" th:if="${name != null}">
+                        <span class="contact-label">Name:</span> <span th:text="${name}">Name</span>
+                    </div>
+                    <div class="contact-item" th:if="${location != null}">
+                        <span class="contact-label">Location:</span> <span th:text="${location}">Location</span>
+                    </div>
+                    <div class="contact-item" th:if="${email != null}">
+                        <span class="contact-label">Email:</span> <span th:text="${email}">email</span>
+                    </div>
+                    <div class="contact-item" th:if="${phone != null}">
+                        <span class="contact-label">Phone:</span> <span th:text="${phone}">phone</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-left" th:if="${education != null and !education.isEmpty()}">
+                <h2>Education</h2>
+                <div th:each="edu : ${education}" style="margin-bottom: 15px;">
+                    <div class="section-content">
+                        <div style="font-weight: 700; color: #1a1a1a; font-size: 11px;" th:text="${edu.institution}">Institution</div>
+                        <div th:text="${edu.degree}">Degree</div>
+                        <div th:text="${edu.year}">Year</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-left" th:if="${skills != null and !skills.isEmpty()}">
+                <h2>Technical Skills</h2>
+                <div th:each="skill : ${skills}" class="skill-item" th:text="${skill}">Skill</div>
+            </div>
+
+            <div class="section-left" th:if="${certifications != null and !certifications.isEmpty()}">
+                <h2>Certifications</h2>
+                <div th:each="cert : ${certifications}" class="skill-item" th:text="${cert}">Certification</div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="header-right">
+                <h1><span th:text="${name}">Name</span></h1>
+            </div>
+
+            <div class="intro-box" th:utext="${summary}">
+                A graphic designer is a professional within the graphic design and graphic arts industry who assembles together images, typography or motion graphics to create a piece of design. Industry alta...
+            </div>
+
+            <div class="section-right" th:if="${experience != null and !experience.isEmpty()}">
+                <h2>Experience</h2>
+                <div th:each="exp : ${experience}" class="experience-item">
+                    <div class="job-title" th:text="${exp.title}">Job Title</div>
+                    <div class="company-info">
+                        <span th:text="${exp.company}">Company</span> — <span th:text="${exp.duration}">Duration</span>
+                    </div>
+                    <div class="job-description" th:utext="${exp.description}">
+                        Job description goes here...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

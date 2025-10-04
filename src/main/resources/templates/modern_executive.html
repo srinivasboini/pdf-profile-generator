@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Modern Executive - PROFESSIONAL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        .container {
+            display: table;
+            width: 100%;
+        }
+        .sidebar {
+            display: table-cell;
+            width: 30%;
+            background: #34495e;
+            color: white;
+            padding: 40px 25px;
+            vertical-align: top;
+        }
+        .profile-header {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .profile-header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        .sidebar-section h2 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .contact-item {
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .skills-grid {
+            margin: 0;
+        }
+        .skill-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 10px;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .cert-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cert-list li {
+            margin-bottom: 8px;
+            font-size: 12px;
+            padding-left: 15px;
+            text-indent: -15px;
+        }
+        .main-content {
+            display: table-cell;
+            width: 70%;
+            padding: 40px 45px;
+            background: white;
+            vertical-align: top;
+        }
+        .summary-section {
+            margin-bottom: 35px;
+            background: #ecf0f1;
+            padding: 22px;
+            border-left: 5px solid #3498db;
+        }
+        .summary-section h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .summary-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #34495e;
+        }
+        .content-section {
+            margin-bottom: 35px;
+        }
+        .content-section:last-child {
+            page-break-inside: avoid;
+        }
+        .content-section h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .content-section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+        }
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 22px;
+            border-left: 3px solid #ecf0f1;
+        }
+        .timeline-item:last-child {
+            page-break-inside: avoid;
+        }
+        .job-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        .company {
+            font-size: 15px;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .date {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .job-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .job-description ul {
+            margin: 8px 0;
+            padding-left: 18px;
+            list-style-type: disc;
+        }
+        .job-description li {
+            margin-bottom: 5px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #555;
+        }
+        .education-item {
+            margin-bottom: 18px;
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 6px;
+        }
+        .education-item:last-child {
+            page-break-inside: avoid;
+        }
+        .degree {
+            font-size: 15px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        .institution {
+            font-size: 14px;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .year {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        @page {
+            margin: 15mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-header">
+                <h1 th:text="${name}">Candidate Name</h1>
+            </div>
+            <div class="sidebar-section">
+                <h2>Contact</h2>
+                <div class="contact-item" th:text="${email}">email@example.com</div>
+                <div class="contact-item" th:text="${phone}">+1 (555) 123-4567</div>
+                <div class="contact-item" th:text="${location}">City, State</div>
+            </div>
+            <div class="sidebar-section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item" th:each="skill : ${skills}" th:text="${skill}">Skill</div>
+                </div>
+            </div>
+            <div class="sidebar-section" th:if="${certifications != null and !certifications.isEmpty()}">
+                <h2>Certifications</h2>
+                <ul class="cert-list">
+                    <li th:each="cert : ${certifications}">
+                        <span style="color: #3498db;">▸</span> <span th:text="${cert}">Certification</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="summary-section">
+                <h2>Professional Summary</h2>
+                <div class="summary-text" th:utext="${summary}">
+                    Professional summary goes here...
+                </div>
+            </div>
+            <div class="content-section" th:if="${experience != null and !experience.isEmpty()}">
+                <h2>Experience</h2>
+                <div class="timeline-item" th:each="exp : ${experience}">
+                    <div class="job-title" th:text="${exp.title}">Job Title</div>
+                    <div class="company" th:text="${exp.company}">Company Name</div>
+                    <div class="date" th:text="${exp.duration}">Jan 2020 - Present</div>
+                    <div class="job-description" th:utext="${exp.description}">
+                        Job description and achievements...
+                    </div>
+                </div>
+            </div>
+            <div class="content-section" th:if="${education != null and !education.isEmpty()}">
+                <h2>Education</h2>
+                <div class="education-item" th:each="edu : ${education}">
+                    <div class="degree" th:text="${edu.degree}">Degree</div>
+                    <div class="institution" th:text="${edu.institution}">University Name</div>
+                    <div class="year" th:text="${edu.year}">2020</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

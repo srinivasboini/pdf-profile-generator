@@ -1,0 +1,44 @@
+{
+  "name": "Emily Martinez",
+  "email": "emily.martinez@email.com",
+  "phone": "+1 (555) 123-4567",
+  "location": "Austin, TX",
+  "summary": "Recent Computer Science graduate with strong foundation in software development and passion for building innovative web applications. Completed multiple internships and academic projects demonstrating proficiency in full-stack development. Quick learner eager to contribute to dynamic development teams.",
+  "skills": [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "HTML/CSS",
+    "Python",
+    "Git",
+    "SQL",
+    "REST APIs",
+    "Agile",
+    "Problem Solving"
+  ],
+  "experience": [
+    {
+      "title": "Software Engineering Intern",
+      "company": "Tech Innovations Inc.",
+      "duration": "Jun 2023 - Aug 2023",
+      "description": "<ul><li>Developed responsive web components using React and TypeScript for customer-facing portal</li><li>Collaborated with senior developers on code reviews and bug fixes</li><li>Implemented unit tests achieving 80% code coverage</li><li>Participated in Agile ceremonies including daily standups and sprint planning</li></ul>"
+    },
+    {
+      "title": "Web Development Intern",
+      "company": "Digital Media Agency",
+      "duration": "May 2022 - Aug 2022",
+      "description": "<ul><li>Built and maintained client websites using HTML, CSS, and JavaScript</li><li>Optimized website performance improving load times by 30%</li><li>Worked with design team to implement pixel-perfect UI designs</li></ul>"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University of Texas at Austin",
+      "year": "2024"
+    }
+  ],
+  "certifications": [
+    "AWS Certified Cloud Practitioner",
+    "freeCodeCamp Responsive Web Design Certification"
+  ]
+}

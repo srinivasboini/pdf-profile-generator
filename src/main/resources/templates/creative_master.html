@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Creative Master - EXPERT</title>
+    <style>
+        * {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #2c2c2c;
+            margin: 0;
+            padding: 0;
+            background: white;
+            font-size: 12px;
+        }
+        .container {
+            display: table;
+            width: 100%;
+        }
+        .header {
+            background: #e8d5c4;
+            padding: 40px 50px;
+            border-bottom: 3px solid white;
+        }
+        .header h1 {
+            font-size: 38px;
+            font-weight: 900;
+            margin: 0;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            color: #1a1a1a;
+            margin-top: 5px;
+        }
+        .contact-bar {
+            background: white;
+            padding: 12px 50px;
+            font-size: 11px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #e8d5c4;
+        }
+        .contact-bar span {
+            margin-right: 25px;
+        }
+        .main-container {
+            display: table;
+            width: 100%;
+        }
+        .sidebar {
+            display: table-cell;
+            width: 35%;
+            background: #f5f5f5;
+            padding: 30px 25px;
+            vertical-align: top;
+        }
+        .content {
+            display: table-cell;
+            width: 65%;
+            background: white;
+            padding: 30px 35px;
+            vertical-align: top;
+        }
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        .sidebar-section h2 {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .skill-item {
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #2c2c2c;
+            display: table;
+            width: 100%;
+        }
+        .skill-name {
+            display: table-cell;
+            width: 70%;
+        }
+        .skill-bar {
+            display: table-cell;
+            width: 30%;
+            text-align: right;
+        }
+        .skill-bar::after {
+            content: "▬▬▬";
+            color: #1a1a1a;
+            letter-spacing: 2px;
+        }
+        .award-item, .interest-item {
+            margin-bottom: 10px;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+        .award-year {
+            font-weight: 700;
+            color: #1a1a1a;
+            font-size: 11px;
+        }
+        .award-details {
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-size: 11px;
+        }
+        .interest-item {
+            color: #2c2c2c;
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+        .content-section {
+            margin-bottom: 30px;
+        }
+        .content-section:last-child {
+            page-break-inside: avoid;
+        }
+        .content-section h2 {
+            font-size: 13px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        .experience-item {
+            margin-bottom: 25px;
+        }
+        .experience-item:last-child {
+            page-break-inside: avoid;
+        }
+        .job-title-line {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .job-title {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .company-name {
+            color: #1a1a1a;
+        }
+        .job-date {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .job-description {
+            font-size: 12px;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+        .job-description ul {
+            margin: 8px 0;
+            padding-left: 18px;
+            list-style-type: disc;
+        }
+        .job-description li {
+            margin-bottom: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #4a4a4a;
+        }
+        @page {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 th:text="${name}">SMITH ZHONATHONE</h1>
+            <div class="subtitle">Creative developer</div>
+        </div>
+
+        <div class="contact-bar">
+            <span th:text="${phone}">+8801792 30 33 15</span>
+            <span th:text="${email}">zhonathonesmithy@gmail.co</span>
+            <span th:text="${location}">Your Street Address Here</span>
+        </div>
+
+        <div class="main-container">
+            <div class="sidebar">
+                <div class="sidebar-section" th:if="${education != null and !education.isEmpty()}">
+                    <h2>EDUCATION</h2>
+                    <div th:each="edu : ${education}" style="margin-bottom: 15px;">
+                        <div class="award-year" th:text="${edu.year}">2003-2004</div>
+                        <div class="award-details">
+                            <div th:text="${edu.degree}">Degree</div>
+                            <div th:text="${edu.institution}">Institution</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section" th:if="${certifications != null and !certifications.isEmpty()}">
+                    <h2>CERTIFICATIONS</h2>
+                    <div th:each="cert : ${certifications}" class="award-item">
+                        <div class="award-details" th:text="${cert}">Certification</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section" th:if="${skills != null and !skills.isEmpty()}">
+                    <h2>TECHNICAL SKILLS</h2>
+                    <div th:each="skill : ${skills}" class="interest-item" th:text="${skill}">Skill</div>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class="content-section" th:if="${experience != null and !experience.isEmpty()}">
+                    <h2>EXPERIENCE</h2>
+                    <div class="experience-item" th:each="exp : ${experience}">
+                        <div class="job-title-line">
+                            <span class="job-title" th:text="${exp.title}">YOUR JOB TITLE</span> |
+                            <span class="company-name" th:text="${exp.company}">COMPANY NAME</span>
+                        </div>
+                        <div class="job-date" th:text="${exp.duration}">Company, Province | 2013-2015</div>
+                        <div class="job-description" th:utext="${exp.description}">
+                            Job description goes here...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

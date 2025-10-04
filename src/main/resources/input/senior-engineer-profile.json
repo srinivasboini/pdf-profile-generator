@@ -1,0 +1,67 @@
+{
+  "name": "Michael Chen",
+  "email": "michael.chen@email.com",
+  "phone": "+1 (415) 555-0123",
+  "location": "San Francisco, CA",
+  "summary": "Results-driven Senior Software Engineer with 8+ years of experience designing and implementing scalable distributed systems. Expert in cloud-native architectures, microservices, and DevOps practices. Proven track record of leading technical initiatives that improved system performance by 300% while reducing infrastructure costs by 40%. Passionate about mentoring junior engineers and fostering a culture of technical excellence.",
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "AWS (EC2, S3, Lambda, RDS)",
+    "Docker",
+    "Kubernetes",
+    "PostgreSQL",
+    "Redis",
+    "Apache Kafka",
+    "REST APIs",
+    "GraphQL",
+    "CI/CD",
+    "Jenkins",
+    "Git",
+    "Agile/Scrum",
+    "Python",
+    "React",
+    "Node.js",
+    "MongoDB",
+    "System Design"
+  ],
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "TechCorp Inc.",
+      "duration": "Jan 2020 - Present",
+      "description": "<ul><li>Architected and implemented a microservices-based e-commerce platform serving 5M+ users, resulting in 99.99% uptime</li><li>Led migration from monolithic architecture to cloud-native microservices, reducing deployment time from 2 hours to 15 minutes</li><li>Designed and developed real-time analytics pipeline using Apache Kafka and AWS Lambda processing 100K events/second</li><li>Mentored team of 5 junior engineers, conducting code reviews and technical design sessions</li><li>Reduced infrastructure costs by 40% through optimization of AWS resources and implementation of auto-scaling policies</li><li>Implemented comprehensive monitoring and alerting using Prometheus and Grafana, reducing MTTR by 60%</li></ul>"
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Digital Solutions Ltd.",
+      "duration": "Mar 2017 - Dec 2019",
+      "description": "<ul><li>Developed RESTful APIs using Spring Boot serving 500K daily active users with average response time under 100ms</li><li>Built automated testing framework increasing code coverage from 45% to 85%</li><li>Implemented CI/CD pipeline using Jenkins and Docker, enabling 20+ deployments per week</li><li>Optimized database queries and indexing strategies, improving query performance by 250%</li><li>Collaborated with product team to deliver 15+ features on time and within budget</li></ul>"
+    },
+    {
+      "title": "Junior Software Developer",
+      "company": "StartupXYZ",
+      "duration": "Jun 2015 - Feb 2017",
+      "description": "<ul><li>Developed full-stack web applications using Java, Spring MVC, and Angular</li><li>Implemented user authentication and authorization using OAuth 2.0 and JWT</li><li>Participated in daily standups, sprint planning, and retrospectives following Agile methodology</li><li>Fixed 200+ bugs and implemented 50+ feature requests during tenure</li></ul>"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science in Computer Science",
+      "institution": "Stanford University",
+      "year": "2015"
+    },
+    {
+      "degree": "Bachelor of Science in Software Engineering",
+      "institution": "University of California, Berkeley",
+      "year": "2013"
+    }
+  ],
+  "certifications": [
+    "AWS Certified Solutions Architect - Professional",
+    "Certified Kubernetes Administrator (CKA)",
+    "Oracle Certified Professional Java SE 11 Developer",
+    "Certified ScrumMaster (CSM)"
+  ]
+}
