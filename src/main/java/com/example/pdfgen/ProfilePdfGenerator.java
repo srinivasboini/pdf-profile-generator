@@ -10,43 +10,32 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 
 /**
  * Main application class for generating optimized candidate profile PDFs
  */
 public class ProfilePdfGenerator {
 
-    private static final String DEFAULT_TEMPLATE = "minimalist_profile_template";
-    private static final String DEFAULT_OUTPUT = "optimized-profile-minimalist_profile_template.pdf";
-    // For modern template
-   /* private static final String DEFAULT_TEMPLATE
-            = "modern_profile_template";
-
-    // For minimalist template
-    private static final String DEFAULT_TEMPLATE
-            = "minimalist_profile_template";
-
-    // For original template
-    private static final String DEFAULT_TEMPLATE
-            = "profile_template";*/
+    private static final String DEFAULT_TEMPLATE = "premium_portfolio";
+    private static final String DEFAULT_OUTPUT = "/tmp/"+DEFAULT_TEMPLATE+".pdf";
 
 
     public static void main(String[] args) {
+        List<String> profiles =  List.of("entry-level-profile", "marketing-manager-profile", "senior-engineer-profile");
+        for (String profile : profiles) {
+            generate(profile);
+        }
+    }
+
+    private static void generate(String profile){
         try {
 
 
-            String profilePath = "src/main/resources/input/profile.json";
+            String profilePath = "src/main/resources/input/"+profile+".json";
             String jobDescriptionPath = "src/main/resources/input/job-description.txt";
-            String openAiApiKey = System.getenv("OPENAI_API_KEY");
 
-            String outputPath =  DEFAULT_OUTPUT;
-
-            // Validate OpenAI API key
-            if (openAiApiKey == null || openAiApiKey.isEmpty()) {
-                System.err.println("Error: OPENAI_API_KEY environment variable is not set.");
-                System.err.println("Please set it using: export OPENAI_API_KEY=your-api-key");
-                System.exit(1);
-            }
+            String outputPath =  "/tmp/"+profile+".pdf";
 
             System.out.println("=== Profile PDF Generator ===");
             System.out.println("Profile: " + profilePath);
@@ -67,25 +56,9 @@ public class ProfilePdfGenerator {
             System.out.println("  Email: " + originalProfile.getEmail());
             System.out.println();
 
-            // Optimize the profile using OpenAI
-            ProfileOptimizer optimizer = new ProfileOptimizer(openAiApiKey, "gpt-5", 180);
-            String optimizedProfileJson = optimizer.optimizeProfile(profileJson, jobDescription);
-
-            // Clean up the response to extract JSON if wrapped in markdown
-            optimizedProfileJson = cleanJsonResponse(optimizedProfileJson);
-
-            // Parse the optimized profile
-            CandidateProfile optimizedProfile = gson.fromJson(optimizedProfileJson, CandidateProfile.class);
-
-            System.out.println("Optimized Profile:");
-            System.out.println("  Name: " + optimizedProfile.getName());
-            System.out.println("  Summary length: " + optimizedProfile.getSummary().length() + " characters");
-            System.out.println("  Skills count: " + optimizedProfile.getSkills().size());
-            System.out.println();
-
             // Process the template with optimized profile data
             TemplateService templateService = new TemplateService();
-            String processedHtml = templateService.processTemplate(DEFAULT_TEMPLATE, optimizedProfile);
+            String processedHtml = templateService.processTemplate(DEFAULT_TEMPLATE, originalProfile);
 
             // Generate PDF from the processed HTML
             PdfGeneratorService pdfService = new PdfGeneratorService();
@@ -94,8 +67,6 @@ public class ProfilePdfGenerator {
             System.out.println();
             System.out.println("✓ Success! Optimized profile PDF generated: " + outputPath);
 
-            // Clean up
-            optimizer.close();
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
