@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class ProfilePdfGenerator {
 
-    private static final String DEFAULT_TEMPLATE = "premium_portfolio";
+    private static final String DEFAULT_TEMPLATE = "david_anderson";
     private static final String DEFAULT_OUTPUT = "/tmp/"+DEFAULT_TEMPLATE+".pdf";
 
 

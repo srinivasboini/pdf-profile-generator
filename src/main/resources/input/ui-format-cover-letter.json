@@ -1,0 +1,27 @@
+{
+  "templateId": "cover_letter_professional_001",
+  "coverLetter": {
+    "header": {
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "phone": "(555) 123-4567",
+      "date": "2025-01-15"
+    },
+    "recipient": {
+      "name": "Hiring Manager",
+      "company": "TechCorp Inc.",
+      "position": "Software Engineer"
+    },
+    "salutation": "Dear Hiring Manager",
+    "content": [
+      "I am excited to apply for the Software Engineer position at TechCorp. With 5 years of experience in full-stack development, I am confident in my ability to contribute to your team.",
+      "In my current role, I have successfully led multiple projects using React, Node.js, and AWS, delivering scalable solutions that serve thousands of users daily.",
+      "I would welcome the opportunity to discuss how my skills align with TechCorp's needs.",
+      "Thank you for your consideration."
+    ],
+    "closing": {
+      "valediction": "Best regards",
+      "name": "John Doe"
+    }
+  }
+}

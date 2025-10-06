@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cover Letter - Classic Professional</title>
+    <style>
+        * {
+            font-family: 'Calibri', 'Arial', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+        }
+        .contact-info {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #666;
+        }
+        .date {
+            text-align: right;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .recipient {
+            margin-bottom: 25px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .recipient-name {
+            font-weight: 700;
+            color: #000;
+        }
+        .salutation {
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .body-paragraph {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .closing {
+            margin-top: 30px;
+            margin-bottom: 60px;
+            font-size: 14px;
+        }
+        .signature {
+            font-weight: 700;
+            font-size: 14px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with candidate info -->
+    <div class="header">
+        <h1 th:text="${name}">John Doe</h1>
+        <div class="contact-info">
+            <span th:text="${email}">john.doe@email.com</span> •
+            <span th:text="${phone}">123-456-7890</span>
+        </div>
+    </div>
+
+    <!-- Date -->
+    <div class="date" th:text="${date}">January 15, 2024</div>
+
+    <!-- Recipient Information (optional) -->
+    <div class="recipient" th:if="${recipientName != null or companyName != null}">
+        <div class="recipient-name" th:if="${recipientName != null}" th:text="${recipientName}">Hiring Manager</div>
+        <div th:if="${companyName != null}" th:text="${companyName}">Company Name</div>
+        <div th:if="${position != null}" th:text="${position + ' Position'}">Position</div>
+    </div>
+
+    <!-- Salutation -->
+    <div class="salutation" th:text="${salutation}">Dear Hiring Manager,</div>
+
+    <!-- Body Paragraphs -->
+    <div th:each="paragraph : ${content}" class="body-paragraph" th:text="${paragraph}">
+        This is a paragraph of the cover letter content.
+    </div>
+
+    <!-- Closing -->
+    <div class="closing">
+        <div th:text="${valediction}">Sincerely,</div>
+    </div>
+
+    <!-- Signature -->
+    <div class="signature" th:text="${signature}">John Doe</div>
+</body>
+</html>

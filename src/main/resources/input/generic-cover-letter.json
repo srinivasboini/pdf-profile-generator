@@ -1,0 +1,17 @@
+{
+  "templateId": "cover_letter_professional_001",
+  "coverLetter": {
+    "candidateName": "John Doe",
+    "email": "john.doe@email.com",
+    "phone": "(555) 123-4567",
+    "address": "123 Main Street, San Francisco, CA 94102",
+    "date": "January 15, 2024",
+    "companyName": "Tech Innovations Inc.",
+    "bodyParagraphs": [
+      "I am writing to express my strong interest in the Senior Software Engineer position at your company. With over 8 years of experience in full-stack development and a proven track record of delivering high-impact solutions, I am excited about the opportunity to contribute to your innovative team.",
+      "In my current role at Global Tech Solutions, I have successfully led the development of microservices architecture that improved system performance by 40% and reduced operational costs by $2M annually. My expertise in Java, Spring Boot, React, and cloud technologies would be valuable to your engineering initiatives.",
+      "I am particularly drawn to your company because of your commitment to cutting-edge technology and innovation. I am confident that my technical skills, leadership experience, and passion for building scalable solutions would make me a valuable addition to your team.",
+      "I would welcome the opportunity to discuss how my background and skills can contribute to your continued success. Thank you for considering my application. I look forward to speaking with you soon."
+    ]
+  }
+}

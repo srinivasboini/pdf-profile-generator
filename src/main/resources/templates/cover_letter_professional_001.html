@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cover Letter - Modern Executive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        .container {
+            display: table;
+            width: 100%;
+            min-height: 100vh;
+        }
+        .sidebar {
+            display: table-cell;
+            width: 30%;
+            background: #34495e;
+            color: white;
+            padding: 40px 25px;
+            vertical-align: top;
+        }
+        .profile-header {
+            margin-bottom: 35px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .profile-header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        .contact-item {
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .main-content {
+            display: table-cell;
+            width: 70%;
+            padding: 40px;
+            vertical-align: top;
+        }
+        .date {
+            text-align: right;
+            font-size: 13px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .recipient {
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .recipient div {
+            margin-bottom: 3px;
+        }
+        .recipient-name {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .salutation {
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .body-paragraph {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .closing {
+            margin-top: 35px;
+            margin-bottom: 60px;
+            font-size: 14px;
+        }
+        .signature {
+            font-weight: 700;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar with candidate info -->
+        <div class="sidebar">
+            <div class="profile-header">
+                <h1 th:text="${name}">John Doe</h1>
+            </div>
+            <div class="contact-item" th:text="${email}">john.doe@email.com</div>
+            <div class="contact-item" th:text="${phone}">123-456-7890</div>
+            <div class="contact-item" th:text="${address}">City, State</div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <!-- Date -->
+            <div class="date" th:text="${date}">January 15, 2024</div>
+
+            <!-- Recipient Information -->
+            <div class="recipient" th:if="${recipientName != null or companyName != null}">
+                <div class="recipient-name" th:if="${recipientName != null and !recipientName.isEmpty()}" th:text="${recipientName}">Hiring Manager</div>
+                <div th:if="${recipientTitle != null and !recipientTitle.isEmpty()}" th:text="${recipientTitle}">Human Resources Director</div>
+                <div th:text="${companyName}">Company Name</div>
+                <div th:if="${companyAddress != null and !companyAddress.isEmpty()}" th:text="${companyAddress}">123 Business St, City, State 12345</div>
+                <div th:if="${position != null}" th:text="${position + ' Position'}">Position</div>
+            </div>
+
+            <!-- Salutation -->
+            <div class="salutation" th:text="${salutation}">Dear Hiring Manager,</div>
+
+            <!-- Body Paragraphs -->
+            <div th:each="paragraph : ${content}" class="body-paragraph" th:text="${paragraph}">
+                This is a paragraph of the cover letter content.
+            </div>
+
+            <!-- Closing -->
+            <div class="closing">
+                <div th:text="${valediction}">Sincerely,</div>
+            </div>
+
+            <!-- Signature -->
+            <div class="signature" th:text="${signature}">John Doe</div>
+        </div>
+    </div>
+</body>
+</html>

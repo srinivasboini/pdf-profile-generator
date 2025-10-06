@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cover Letter - Executive Premium</title>
+    <style>
+        * {
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            padding: 45px 50px;
+        }
+        .header h1 {
+            margin: 0 0 12px 0;
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        .contact-info {
+            font-size: 12px;
+            opacity: 0.95;
+            font-style: italic;
+        }
+        .contact-info span::after {
+            content: " • ";
+            margin: 0 10px;
+        }
+        .contact-info span:last-child::after {
+            content: "";
+        }
+        .main-content {
+            padding: 50px 50px 40px 50px;
+        }
+        .date {
+            text-align: right;
+            font-size: 12px;
+            margin-bottom: 35px;
+            color: #555;
+            font-style: italic;
+        }
+        .recipient {
+            margin-bottom: 35px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .recipient div {
+            margin-bottom: 4px;
+        }
+        .recipient-name {
+            font-weight: 700;
+            color: #203a43;
+            font-size: 14px;
+        }
+        .salutation {
+            margin-bottom: 22px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .body-paragraph {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .closing {
+            margin-top: 35px;
+            margin-bottom: 60px;
+            font-size: 13px;
+            font-style: italic;
+        }
+        .signature {
+            font-weight: 600;
+            font-size: 15px;
+            color: #203a43;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with candidate info -->
+    <div class="header">
+        <h1 th:text="${name}">John Doe</h1>
+        <div class="contact-info">
+            <span th:text="${email}">john.doe@email.com</span>
+            <span th:text="${phone}">123-456-7890</span>
+            <span th:text="${address}">City, State</span>
+        </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="main-content">
+        <!-- Date -->
+        <div class="date" th:text="${date}">January 15, 2024</div>
+
+        <!-- Recipient Information -->
+        <div class="recipient" th:if="${recipientName != null or companyName != null}">
+            <div class="recipient-name" th:text="${recipientName}">Hiring Manager</div>
+            <div th:text="${recipientTitle}">Human Resources Director</div>
+            <div th:text="${companyName}">Company Name</div>
+            <div th:text="${companyAddress}">123 Business St, City, State 12345</div>
+            <div th:if="${position != null}" th:text="${position + ' Position'}">Position</div>
+        </div>
+
+        <!-- Salutation -->
+        <div class="salutation" th:text="${salutation}">Dear Hiring Manager,</div>
+
+        <!-- Body Paragraphs -->
+        <div th:each="paragraph : ${content}" class="body-paragraph" th:text="${paragraph}">
+            This is a paragraph of the cover letter content.
+        </div>
+
+        <!-- Closing -->
+        <div class="closing">
+            <div th:text="${valediction}">Sincerely,</div>
+        </div>
+
+        <!-- Signature -->
+        <div class="signature" th:text="${signature}">John Doe</div>
+    </div>
+</body>
+</html>

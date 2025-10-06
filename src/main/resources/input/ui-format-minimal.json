@@ -1,0 +1,16 @@
+{
+  "templateId": "cover_letter_starter_001",
+  "coverLetter": {
+    "header": {
+      "name": "Jane Smith",
+      "email": "jane.smith@email.com",
+      "phone": "(555) 987-6543",
+      "date": "2025-01-15"
+    },
+    "content": [
+      "I am writing to express my strong interest in the position at your company. With my background and experience, I believe I would be an excellent fit for your team.",
+      "My skills and dedication make me well-suited for this role, and I am eager to contribute to your organization's success.",
+      "Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to your team."
+    ]
+  }
+}

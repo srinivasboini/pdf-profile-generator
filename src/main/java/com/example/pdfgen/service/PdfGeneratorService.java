@@ -67,6 +67,7 @@ public class PdfGeneratorService {
 
     /**
      * Generates a PDF from HTML content and writes it to an OutputStream
+     * Thread-safe: Creates new PdfWriter and PdfDocument for each request
      *
      * @param htmlContent  The HTML content to convert to PDF
      * @param outputStream The output stream where the PDF should be written
@@ -75,21 +76,32 @@ public class PdfGeneratorService {
     public void generatePdfToStream(String htmlContent, OutputStream outputStream) throws IOException {
         log.debug("Generating PDF from HTML to stream");
 
-        // Create a PdfWriter
-        PdfWriter writer = new PdfWriter(outputStream);
+        PdfWriter writer = null;
+        PdfDocument pdfDocument = null;
 
-        // Create a PdfDocument
-        PdfDocument pdfDocument = new PdfDocument(writer);
+        try {
+            // Create a PdfWriter (each request gets its own instance)
+            writer = new PdfWriter(outputStream);
 
-        // Set up converter properties
-        ConverterProperties converterProperties = new ConverterProperties();
+            // Create a PdfDocument (each request gets its own instance)
+            pdfDocument = new PdfDocument(writer);
 
-        // Convert HTML to PDF
-        HtmlConverter.convertToPdf(htmlContent, pdfDocument, converterProperties);
+            // Set up converter properties (thread-safe, created per request)
+            ConverterProperties converterProperties = new ConverterProperties();
 
-        // Close the document
-        pdfDocument.close();
+            // Convert HTML to PDF
+            HtmlConverter.convertToPdf(htmlContent, pdfDocument, converterProperties);
 
-        log.debug("PDF generated successfully to stream");
+            log.debug("PDF generated successfully to stream");
+        } finally {
+            // Ensure proper resource cleanup even if exceptions occur
+            if (pdfDocument != null) {
+                try {
+                    pdfDocument.close();
+                } catch (Exception e) {
+                    log.error("Error closing PDF document: {}", e.getMessage());
+                }
+            }
+        }
     }
 }
