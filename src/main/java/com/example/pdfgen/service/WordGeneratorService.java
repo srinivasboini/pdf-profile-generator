@@ -21,6 +21,44 @@ import java.math.BigInteger;
 public class WordGeneratorService {
 
     /**
+     * Strip HTML tags from text and convert to plain text
+     * Handles common HTML entities and formatting
+     */
+    private String stripHtml(String html) {
+        if (html == null || html.isEmpty()) {
+            return html;
+        }
+
+        // Replace <br>, <br/>, <br /> with newlines
+        String text = html.replaceAll("<br\\s*/?>", "\n");
+
+        // Replace </li> with newline for list items
+        text = text.replaceAll("</li>", "\n");
+
+        // Replace <p> closing tags with double newline
+        text = text.replaceAll("</p>", "\n\n");
+
+        // Remove all remaining HTML tags
+        text = text.replaceAll("<[^>]+>", "");
+
+        // Decode common HTML entities
+        text = text.replace("&nbsp;", " ");
+        text = text.replace("&amp;", "&");
+        text = text.replace("&lt;", "<");
+        text = text.replace("&gt;", ">");
+        text = text.replace("&quot;", "\"");
+        text = text.replace("&#39;", "'");
+
+        // Clean up multiple newlines
+        text = text.replaceAll("\n{3,}", "\n\n");
+
+        // Trim whitespace
+        text = text.trim();
+
+        return text;
+    }
+
+    /**
      * Generate resume Word document from candidate profile
      */
     public void generateResumeDocx(CandidateProfile profile, ByteArrayOutputStream outputStream) throws IOException {
@@ -53,7 +91,7 @@ public class WordGeneratorService {
                 addSectionHeading(document, "PROFESSIONAL SUMMARY");
                 XWPFParagraph summaryPara = document.createParagraph();
                 XWPFRun summaryRun = summaryPara.createRun();
-                summaryRun.setText(profile.getSummary());
+                summaryRun.setText(stripHtml(profile.getSummary()));
                 summaryRun.setFontSize(11);
                 summaryRun.setFontFamily("Arial");
                 addSpacing(document);
@@ -90,14 +128,28 @@ public class WordGeneratorService {
                     durRun.setFontSize(10);
                     durRun.setFontFamily("Arial");
 
-                    // Description
+                    // Description (strip HTML and handle bullet points)
                     if (exp.getDescription() != null && !exp.getDescription().isEmpty()) {
-                        XWPFParagraph descPara = document.createParagraph();
-                        descPara.setIndentationLeft(720); // 0.5 inch indent
-                        XWPFRun descRun = descPara.createRun();
-                        descRun.setText("• " + exp.getDescription());
-                        descRun.setFontSize(11);
-                        descRun.setFontFamily("Arial");
+                        String cleanDescription = stripHtml(exp.getDescription());
+
+                        // Split by newlines to handle multiple bullet points
+                        String[] lines = cleanDescription.split("\n");
+                        for (String line : lines) {
+                            line = line.trim();
+                            if (!line.isEmpty()) {
+                                XWPFParagraph descPara = document.createParagraph();
+                                descPara.setIndentationLeft(720); // 0.5 inch indent
+                                XWPFRun descRun = descPara.createRun();
+                                // Add bullet if not already present
+                                if (!line.startsWith("•") && !line.startsWith("-") && !line.startsWith("*")) {
+                                    descRun.setText("• " + line);
+                                } else {
+                                    descRun.setText(line.replaceFirst("^[-*]", "•"));
+                                }
+                                descRun.setFontSize(11);
+                                descRun.setFontFamily("Arial");
+                            }
+                        }
                     }
                     addSpacing(document);
                 }
@@ -227,7 +279,7 @@ public class WordGeneratorService {
                     XWPFParagraph bodyPara = document.createParagraph();
                     bodyPara.setAlignment(ParagraphAlignment.BOTH);
                     XWPFRun bodyRun = bodyPara.createRun();
-                    bodyRun.setText(paragraph);
+                    bodyRun.setText(stripHtml(paragraph));
                     bodyRun.setFontSize(11);
                     bodyRun.setFontFamily("Arial");
                     addSpacing(document);
